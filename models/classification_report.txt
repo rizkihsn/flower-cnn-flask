@@ -1,0 +1,14 @@
+CLASSIFICATION REPORT
+==================================================
+
+              precision    recall  f1-score   support
+
+       daisy     0.8943    0.7237    0.8000       152
+   dandelion     0.7972    0.8048    0.8009       210
+        rose     0.6147    0.4295    0.5057       156
+   sunflower     0.8108    0.8219    0.8163       146
+       tulip     0.5933    0.8112    0.6853       196
+
+    accuracy                         0.7267       860
+   macro avg     0.7421    0.7182    0.7217       860
+weighted avg     0.7371    0.7267    0.7235       860

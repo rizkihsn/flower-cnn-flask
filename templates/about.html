@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informasi arsitektur model CNN untuk klasifikasi jenis bunga.">
+    <title>Tentang Model — Flower CNN</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- ==========================================
+     NAVBAR
+     ========================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <span class="brand-icon">🌸</span> FlowerCNN
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="bi bi-house-door me-1"></i> Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/about"><i class="bi bi-cpu me-1"></i> Tentang Model</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ==========================================
+     ABOUT CONTENT
+     ========================================== -->
+
+<div class="about-container">
+
+    <div class="about-hero">
+        <div class="hero-badge">🧠 Deep Learning</div>
+        <h1>Tentang <span class="gradient-text">Model CNN</span></h1>
+        <p>
+            Penjelasan arsitektur, dataset, dan teknologi yang digunakan
+            dalam sistem klasifikasi jenis bunga ini.
+        </p>
+    </div>
+
+    <!-- ==========================================
+         APA ITU CNN
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-lightbulb"></i> Apa itu CNN?</h2>
+        <p>
+            <strong>Convolutional Neural Network (CNN)</strong> adalah jenis arsitektur deep learning
+            yang dirancang khusus untuk memproses data berstruktur grid, seperti gambar.
+            CNN menggunakan lapisan konvolusi untuk mengekstrak fitur dari gambar secara otomatis,
+            mulai dari fitur sederhana (tepi, warna) hingga fitur kompleks (pola, bentuk objek).
+        </p>
+        <p style="margin-top: 12px;">
+            Dalam projek ini, CNN digunakan untuk <strong>mengklasifikasikan jenis bunga</strong>
+            berdasarkan gambar yang diinputkan pengguna. Model menerima gambar berukuran 128×128 piksel
+            dan menghasilkan prediksi berupa salah satu dari 5 kelas bunga.
+        </p>
+    </div>
+
+    <!-- ==========================================
+         ARSITEKTUR MODEL
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-diagram-3"></i> Arsitektur Model</h2>
+        <p>Model CNN yang digunakan terdiri dari lapisan-lapisan berikut:</p>
+
+        <div class="arch-flow">
+            <div class="arch-block">Input<br><small>128×128×3</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Conv2D<br><small>32 filters</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">MaxPool<br><small>2×2</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Conv2D<br><small>64 filters</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">MaxPool<br><small>2×2</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Conv2D<br><small>128 filters</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">MaxPool<br><small>2×2</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Flatten</div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Dense<br><small>256 neuron</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Dropout<br><small>0.5</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Output<br><small>5 kelas</small></div>
+        </div>
+
+        <ul style="margin-top: 16px;">
+            <li><strong>Conv2D</strong> — Lapisan konvolusi untuk mengekstrak fitur gambar</li>
+            <li><strong>MaxPooling2D</strong> — Mengurangi dimensi spasial gambar</li>
+            <li><strong>Flatten</strong> — Mengubah matriks menjadi vektor 1D</li>
+            <li><strong>Dense</strong> — Fully connected layer untuk klasifikasi</li>
+            <li><strong>Dropout (0.5)</strong> — Regularisasi untuk mencegah overfitting</li>
+            <li><strong>Softmax</strong> — Fungsi aktivasi output untuk probabilitas multi-kelas</li>
+        </ul>
+    </div>
+
+    <!-- ==========================================
+         DATASET
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-database"></i> Dataset</h2>
+        <p>
+            Dataset yang digunakan adalah <strong>Flowers Recognition Dataset</strong> dari
+            <a href="https://www.kaggle.com/datasets/alxmamaev/flowers-recognition" target="_blank" style="color: var(--primary);">Kaggle</a>,
+            yang berisi gambar 5 jenis bunga:
+        </p>
+        <ul>
+            <li><strong>Daisy</strong> — Bunga aster putih</li>
+            <li><strong>Dandelion</strong> — Bunga dandelion kuning</li>
+            <li><strong>Rose</strong> — Bunga mawar</li>
+            <li><strong>Sunflower</strong> — Bunga matahari</li>
+            <li><strong>Tulip</strong> — Bunga tulip</li>
+        </ul>
+        <p style="margin-top: 12px;">
+            Data dibagi menjadi <strong>80% training</strong> dan <strong>20% validasi</strong>
+            menggunakan <code style="color: var(--primary);">ImageDataGenerator</code>.
+            Augmentasi data diterapkan meliputi rotasi, zoom, shift, dan flip horizontal.
+        </p>
+    </div>
+
+    <!-- ==========================================
+         PROSES TRAINING
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-gear"></i> Proses Training</h2>
+        <ul>
+            <li><strong>Optimizer:</strong> Adam</li>
+            <li><strong>Loss Function:</strong> Categorical Crossentropy</li>
+            <li><strong>Epochs:</strong> 15 (dengan Early Stopping)</li>
+            <li><strong>Batch Size:</strong> 32</li>
+            <li><strong>Image Size:</strong> 128 × 128 piksel</li>
+            <li><strong>Callback:</strong> ModelCheckpoint (simpan model terbaik) + EarlyStopping (patience=5)</li>
+        </ul>
+    </div>
+
+    <!-- ==========================================
+         TEKNOLOGI
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-code-slash"></i> Teknologi yang Digunakan</h2>
+        <div class="tech-badges">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">TensorFlow / Keras</span>
+            <span class="tech-badge">NumPy</span>
+            <span class="tech-badge">Pillow</span>
+            <span class="tech-badge">Bootstrap 5</span>
+            <span class="tech-badge">Matplotlib</span>
+            <span class="tech-badge">Scikit-learn</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         CARA KERJA
+         ========================================== -->
+
+    <div class="about-section">
+        <h2><i class="bi bi-arrow-repeat"></i> Cara Kerja Aplikasi</h2>
+        <div class="arch-flow" style="margin-top: 16px;">
+            <div class="arch-block">User Upload<br><small>Gambar Bunga</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Preprocessing<br><small>Resize 128×128, Normalisasi</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Model CNN<br><small>Prediksi</small></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-block">Output<br><small>Nama Bunga + Confidence</small></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ==========================================
+     FOOTER
+     ========================================== -->
+
+<footer class="footer">
+    <div class="container">
+        <p>🌸 Flower Classification CNN &copy; 2025 — Tugas Mata Kuliah</p>
+        <p>Menggunakan <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a> &
+           <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a></p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
