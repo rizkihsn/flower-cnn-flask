@@ -26,5 +26,4 @@ dist/
 build/
 *.egg-info/
 Data/
-train_model.ipynb
 models/training_history.json
