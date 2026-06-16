@@ -125,22 +125,24 @@ python app.py
 ```
 
 Buka browser: **http://localhost:5000**
+atau
+Buka link ini : web-production-b525d.up.railway.app 
 
 ### 5. (Opsional) Training Ulang Model
 
 ```bash
-python train_model.py
+python train_model.ipynb
 ```
 
 ## 🌐 Deployment
 
-### Deploy ke Render.com (Gratis)
+### Deploy ke railway (Gratis)
 
 1. Push projek ke GitHub
-2. Buka [Render.com](https://render.com) dan buat akun
-3. Klik **New → Web Service**
+2. Buka railway dan buat akun
+3. Klik **New**
 4. Hubungkan repository GitHub
-5. Render akan otomatis mendeteksi `render.yaml`
+5. Deploy akan otomatis mendeteksi
 6. Klik **Deploy**
 
 ### Deploy ke Heroku
